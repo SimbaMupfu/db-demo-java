@@ -30,7 +30,7 @@ public class TryJdbc {
         String password = props.getProperty("db.password");
         Connection conn = DriverManager.getConnection(url, username, password);
 
-        Statement statement = conn.createStatement();
+//        Statement statement = conn.createStatement();
         //Retrieve data from DB
 //        String query = "SELECT * FROM student ORDER BY sid ASC";
 //        ResultSet resultSet = statement.executeQuery(query);
@@ -43,8 +43,20 @@ public class TryJdbc {
         //insert into table
 //        String query = "INSERT INTO student VALUES (8, 'Clever', 98)";
         //update field in table
-        String query = "UPDATE student SET sname='Simbarashe' WHERE sid=5";
-        statement.execute(query);
+//        String query = "UPDATE student SET sname='Simbarashe' WHERE sid=5";
+        //Delete row from table
+//        String query = "DELETE FROM student WHERE sid=8";
+
+        //Use PreparedStatement
+        int sid = 8;
+        String sname = "Clever";
+        int marks = 99;
+        String query = "INSERT INTO student VALUES (?, ?, ?)";
+        PreparedStatement statement = conn.prepareStatement(query);
+        statement.setInt(1, sid);
+        statement.setString(2, sname);
+        statement.setInt(3, marks);
+        statement.execute();
         conn.close();
     }
 }
