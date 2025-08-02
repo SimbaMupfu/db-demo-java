@@ -31,14 +31,18 @@ public class TryJdbc {
         Connection conn = DriverManager.getConnection(url, username, password);
 
         Statement statement = conn.createStatement();
-        String query = "SELECT * FROM student";
-        ResultSet resultSet = statement.executeQuery(query);
-        System.out.println("ID - Name - Marks");
-        while(resultSet.next()){
-            System.out.print(resultSet.getInt(1) + " - ");
-            System.out.print(resultSet.getString(2) + " - ");
-            System.out.println(resultSet.getInt(3));
-        }
+        //Retrieve data from DB
+//        String query = "SELECT * FROM student";
+//        ResultSet resultSet = statement.executeQuery(query);
+//        System.out.println("ID - Name - Marks");
+//        while(resultSet.next()){
+//            System.out.print(resultSet.getInt(1) + " - ");
+//            System.out.print(resultSet.getString(2) + " - ");
+//            System.out.println(resultSet.getInt(3));
+//        }
+        String query = "INSERT INTO student VALUES (8, 'Clever', 98)";
+        boolean status = statement.execute(query);
+        System.out.println(status);
         conn.close();
     }
 }
