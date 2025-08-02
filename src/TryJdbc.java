@@ -40,9 +40,11 @@ public class TryJdbc {
 //            System.out.print(resultSet.getString(2) + " - ");
 //            System.out.println(resultSet.getInt(3));
 //        }
-        String query = "INSERT INTO student VALUES (8, 'Clever', 98)";
-        boolean status = statement.execute(query);
-        System.out.println(status);
+        //insert into table
+//        String query = "INSERT INTO student VALUES (8, 'Clever', 98)";
+        //update field in table
+        String query = "UPDATE student SET sname='Simbarashe' WHERE sid=5";
+        statement.execute(query);
         conn.close();
     }
 }
