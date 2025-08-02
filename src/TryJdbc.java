@@ -29,6 +29,13 @@ public class TryJdbc {
         String username = props.getProperty("db.username");
         String password = props.getProperty("db.password");
         Connection conn = DriverManager.getConnection(url, username, password);
-        System.out.println("Connection established!!!");
+
+        Statement statement = conn.createStatement();
+        String query = "SELECT sname FROM student WHERE sid = 2";
+        ResultSet resultSet = statement.executeQuery(query);
+        resultSet.next();
+        String result = resultSet.getString("sname");
+        System.out.println(result);
+        conn.close();
     }
 }
