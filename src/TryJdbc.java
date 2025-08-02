@@ -31,11 +31,14 @@ public class TryJdbc {
         Connection conn = DriverManager.getConnection(url, username, password);
 
         Statement statement = conn.createStatement();
-        String query = "SELECT sname FROM student WHERE sid = 2";
+        String query = "SELECT * FROM student";
         ResultSet resultSet = statement.executeQuery(query);
-        resultSet.next();
-        String result = resultSet.getString("sname");
-        System.out.println(result);
+        System.out.println("ID - Name - Marks");
+        while(resultSet.next()){
+            System.out.print(resultSet.getInt(1) + " - ");
+            System.out.print(resultSet.getString(2) + " - ");
+            System.out.println(resultSet.getInt(3));
+        }
         conn.close();
     }
 }
