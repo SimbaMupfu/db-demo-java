@@ -32,7 +32,7 @@ public class TryJdbc {
 
         Statement statement = conn.createStatement();
         //Retrieve data from DB
-//        String query = "SELECT * FROM student";
+//        String query = "SELECT * FROM student ORDER BY sid ASC";
 //        ResultSet resultSet = statement.executeQuery(query);
 //        System.out.println("ID - Name - Marks");
 //        while(resultSet.next()){
